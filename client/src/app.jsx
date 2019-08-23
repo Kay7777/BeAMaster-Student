@@ -1,5 +1,4 @@
 import Taro, { Component } from '@tarojs/taro'
-import Index from './pages/index'
 import { Provider } from '@tarojs/redux'
 import '@tarojs/async-await'
 import configStore from './store'
@@ -10,6 +9,8 @@ import { getWxUserData } from './utils/wx'
 import Launch from './pages/launch/launch'
 
 import './app.scss'
+
+const store = configStore()
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -22,7 +23,7 @@ class App extends Component {
   config = {
     pages: [
       'pages/launch/launch',      
-      'pages/index/index',
+      'pages/index/index',      
       'pages/my/my'
     ],
     window: {
@@ -49,7 +50,7 @@ class App extends Component {
           selectedIconPath: 'assets/yonghu_selected.png'
         }
       ]
-    },    
+    },
     cloud: true
   }
 

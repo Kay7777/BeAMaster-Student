@@ -36,20 +36,20 @@ export default handleActions({
       isFetching: false
     }
   },
-  [REQUEST_ADD_STUDENT] (state) {
-    return {
-      ...state,
-      isUploading: true
-    }
-  },
-  [RECEIVE_ADD_STUDENT] (state, action) {
-    const { email, university } = action.payload
-    return {
-      ...state,
-      email,
-      university,
-      isLogged: true,      
-      isUploading: false
-    }
-  }
+  // [REQUEST_ADD_STUDENT] (state) {
+  //   return {
+  //     ...state,
+  //     isUploading: true
+  //   }
+  // },
+  // [RECEIVE_ADD_STUDENT] (state, action) {
+  //   const { email, university } = action.payload
+  //   return {
+  //     ...state,
+  //     email,
+  //     university,
+  //     isLogged: true,      
+  //     isUploading: false
+  //   }
+  // }
 }, {...studentData})
