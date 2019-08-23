@@ -1,6 +1,6 @@
 import Taro, { Component } from "@tarojs/taro"
 import { View, Text } from "@tarojs/components"
-import { AtAvatar } from 'taro-ui'
+import { AtAvatar, AtButton } from 'taro-ui'
 import '@tarojs/async-await'
 import { connect } from '@tarojs/redux'
 
@@ -20,6 +20,12 @@ class My extends Component {
     this.setState({
       userInfo: userInfo
     })
+  }
+
+  signupUniversity = () => {
+    Taro.navigateTo({
+      url: '/pages/signupUniversity/signupUniversity'
+    })
   }  
 
   render() {
@@ -28,8 +34,13 @@ class My extends Component {
       <View className='index'>
         <AtAvatar image={userInfo.avatarUrl} />
         <View>{userInfo.nickName}</View>
-        <View>{this.props.student.email}</View>
-        <View>{this.props.student.university}</View>
+        { this.props.student.isLogged ?
+          <View>
+            <View>{this.props.student.university}</View> 
+            <View>{this.props.student.email}</View>
+          </View> 
+          : <AtButton type='primary' size='normal' onClick={this.signupUniversity}>sign up</AtButton>
+        }
       </View>
     )
   }
