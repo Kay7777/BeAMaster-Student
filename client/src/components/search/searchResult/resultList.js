@@ -54,8 +54,8 @@ export default class ResultList extends Component {
     }
   }
 
-  doJump (skuid) {
-    jumpUrl(`/pages/detail/detail?skuid=${skuid}`)
+  doJump (courseId) {
+    jumpUrl(`/pages/courseDetail/courseDetail?courseId=${courseId}`)
   }
 
   srollToTop () {
@@ -73,13 +73,16 @@ export default class ResultList extends Component {
     const {
       list
     } = this.state
-    const {searchResult = {}, showGoTop = false} = this.props
+    const {
+      searchResult = {}, 
+      showGoTop = false
+    } = this.props
     const resultList = list.map((item, index) => {
       return (
         <View
           className='result_content-item'
           key={index}
-          onClick={this.doJump.bind(this, item.skuId)}
+          onClick={this.doJump.bind(this, item._id)}
         >
           <View className='result_content-item_img'>
             <Image
@@ -89,15 +92,15 @@ export default class ResultList extends Component {
               lazyLoad={true}
             />
           </View>
-          <Text className='result_content-item_title'>{item.skuName || ''}</Text>
-          <Text className='result_content-item_subtitle'>{item.name}</Text>
-          <Text className='result_content-item_price' onClick={this.doJump.bind(this, item.skuId)}>
+          <Text className='result_content-item_title'>{item.courseName || ''}</Text>
+          <Text className='result_content-item_subtitle'>{item.courseDescription}</Text>
+          {/* <Text className='result_content-item_price' onClick={this.doJump.bind(this, item._id)}>
             {
               item.price && item.price !== '-1' &&
               <Text className='result_content-item_price_unit'>&yen;</Text>
             }
             {item.price && item.price !== '-1' ? item.price : '暂无报价'}
-          </Text>
+          </Text> */}
         </View>
       )
     })
@@ -111,7 +114,7 @@ export default class ResultList extends Component {
           <View className={showGoTop ? 'search_result-go_top' : 'search_result-go_top not_see_go'} onClick={this.srollToTop}>
             <View className='search_result-go_to_arrow' />
           </View>
-          <Text className={searchResult.count <= searchResult.page * 10 ? 'has_not_more' : 'search_not_see'}>没有更多商品了~</Text>
+          <Text className={searchResult.count <= searchResult.page * 10 ? 'has_not_more' : 'search_not_see'}>没有更多课程了~</Text>
           <Text className={searchResult.count > searchResult.page * 10 ? 'has_not_more' : 'search_not_see'}>正在加载中...</Text>
         </View>
       </ScrollView>

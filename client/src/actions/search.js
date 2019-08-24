@@ -26,8 +26,15 @@ const aMap = {
 export function setSearchHistory (data = {}) {  
   return async dispatch => {     
     try {
-      const res = await Taro.getStorage({key: 'search_history'})
-      let history = res.data
+      let history
+      try {
+        history = Taro.getStorageSync('search_history')
+      } catch (error) {
+        console.log(error)
+      }
+      if (!history) {
+        history = []
+      }
       if (data.value && data.type && data.type === 'add' && history.indexOf(data.value) === -1) {
         history.unshift(data.value)
 

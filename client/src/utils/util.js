@@ -1,5 +1,7 @@
 import Taro from '@tarojs/taro'
 
+const PAGE_LEVEL_LIMIT = 10
+
 function isEmptyObject (obj) {
   if (!obj) { 
     return true
