@@ -8,7 +8,9 @@ export default class Index extends Component {
     navigationBarTitleText: '首页'
   }
 
-  componentWillMount () { }
+  componentWillMount () { 
+
+  }
 
   componentDidMount () { }
 
@@ -20,8 +22,7 @@ export default class Index extends Component {
 
   render () {
     return (
-      <View className='index'>
-        index
+      <View className='index'>    
       </View>
     )
   }

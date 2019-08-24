@@ -39,15 +39,39 @@ function formatNumber(n) {
 }
 
 const arrayToObject = (array, keyField) =>
-   array.reduce((obj, item) => {
-     obj[item[keyField]] = item
-     return obj
-   }, {})
+  array.reduce((obj, item) => {
+    obj[item[keyField]] = item
+    return obj
+  }, {})
+
+function jumpUrl (url, options = {}) {
+  const pages = Taro.getCurrentPages()
+  let method = options.method || 'navigateTo'
+  if (url && typeof url === 'string') {
+    if (method == 'navigateTo' && pages.length >= PAGE_LEVEL_LIMIT - 3) {
+      method = 'redirectTo'
+    }
+
+    if (method == 'navigateToByForce') {
+      method = 'navigateTo'
+    }
+
+    if (method == 'navigateTo' && pages.length == PAGE_LEVEL_LIMIT) {
+      method = 'redirectTo'
+    }
+
+    Taro[method]({
+      url
+    })
+  }
+}
+  
 
 export {
   isEmptyObject,
   getSystemInfo,
   formatDate,
   formatTime,
-  arrayToObject
+  arrayToObject,
+  jumpUrl
 }
