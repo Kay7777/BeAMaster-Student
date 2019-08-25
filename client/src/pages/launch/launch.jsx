@@ -18,11 +18,8 @@ class Launch extends Component {
 
   direct = async () => {
     await this.props.fetchStudentData()
-    // Taro.switchTab({
-    //   url: '/pages/index/index'
-    // })
-    Taro.navigateTo({
-      url: '/pages/list/list'
+    Taro.switchTab({
+      url: '/pages/index/index'
     })
   }
 
