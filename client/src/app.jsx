@@ -27,7 +27,11 @@ class App extends Component {
       'pages/my/my',
       'pages/signupUniversity/signupUniversity',
       'pages/signupEmail/signupEmail',
-      'pages/list/list'
+      'pages/list/list',      
+      'pages/my/wallet/wallet',
+      'pages/my/rate/rate',
+      'pages/my/profile/profile'
+
     ],
     window: {
       backgroundTextStyle: 'light',
