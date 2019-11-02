@@ -100,6 +100,28 @@ export default class Index extends Component {
           isAuth={true}
         />
         }
+        {Object.values(teacherCourses).filter(
+              teacherCourse => teacherCourse.courseState === POSTED
+            ).map(
+              teacherCourse =>
+                <AtCard 
+                  className="card"
+                  note={`${teacherCourse.courseDateSel} ${teacherCourse.courseTimeSel} ${this.props.teacher.name}`}
+                  extra={`${teacherCourse.courseDuration} min`}
+                  title={teacherCourse.courseName}
+                  onClick={this.postedCourseDetail.bind(this, teacherCourse._id)}
+                >
+                  <View className='at-row'>
+                    <View className='at-col at-col-4'>
+                      <Image className="courseCover" src="https://i.udemycdn.com/course/240x135/567828_67d0.jpg" />
+                    </View>
+                    <View className='at-col at-col-8'>
+                      <View style="white-space: pre-wrap">{teacherCourse.courseDescription}</View>
+                      <AtRate className="rate" value={4.5}/>        
+                    </View>
+                  </View>
+                </AtCard>
+                )}
       </View>
     )
   }

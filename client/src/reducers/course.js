@@ -1,41 +1,39 @@
-// import { handleActions } from 'redux-actions'
-// import {
+import { handleActions } from 'redux-actions'
+import {
 
-// } from '../constants/course'
+} from '../constants/course'
 
-// import { arrayToObject } from '../utils/util'
+import { arrayToObject } from '../utils/util'
 
-// const courseData = {
-//   isUploading: false,
-//   isFetching: false,
-//   teacherCourses: {}
-// }
+const courseData = {
+  isUploading: false,
+  isFetching: false,
+  studentCourses: {},
+  allCourses: {}
+}
 
-// export default handleActions({
-//   [REQUEST_ADD_COURSE] (state) {
-//     return {
-//       ...state,
-//       isUploading: true
-//     }
-//   },
-//   [RECEIVE_ADD_COURSE] (state) {
-//     return {
-//       ...state,
-//       isUploading: false,
-//     }
-//   },
-//   [REQUEST_TEACHER_COURSES_INFO] (state) {
-//     return {
-//       ...state,
-//       isFetching: true,
-//     }
-//   },
-//   [RECEIVE_TEACHER_COURSES_INFO] (state, action) {
-//     const teacherCourses = arrayToObject(action.payload, '_id')
-//     return {
-//       ...state,
-//       isFetching: false,
-//       teacherCourses: teacherCourses
-//     }
-//   }
-// }, {...courseData})
+export default handleActions({
+  [REQUEST_ALL_COURSES](state) {
+    return {
+      ...state,
+      isFetching: true,
+    }
+  },
+  [RECEIVE_ALL_COURSES] (state, action) {
+    const { allCourses } = action.payload
+    return {
+      ...state,
+      isFetching: false,
+      allCourses: allCourses
+    }
+  },
+  [REQUEST_STUDENT_COURSES] (state) {
+    return {
+      ...state,
+      isFetching: true,
+    }
+  },
+  [RECEIVE_STUDENT_COURSES] (state, action) {
+
+  }
+}, {...courseData})
